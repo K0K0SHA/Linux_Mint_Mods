@@ -132,6 +132,16 @@ alias tasklist='ps -e'
 alias ls='ls -a --color=auto' 
 alias home='cd ~' 
 alias bashrc='nano ~/.bashrc' 
+
+# TODO: add IF-block, testing if ~/.bashrc exists
+# if (test -f ~/.bashrc)
+# add_to_path adds current directory to $PATH
+alias add_to_path='echo '\''export PATH="$PATH:'$(pwd)'"'\'' >> ~/.bashrc && source ~/.bashrc'
+# remove_from_path does the reverse
+alias remove_from_path='export PATH=$(echo $PATH | sed -e "s;:\?$PWD\(:\|$\);;g")'
+
+
+
 cd ~ 
 if test -f "./banner"; then 
 	more ./banner;	# prints banner if banner exists. Create banner by copy-pasting ASCii art to ~/banner or running the setup script 
